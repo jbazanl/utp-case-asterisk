@@ -1,0 +1,159 @@
+[DID-CASE]
+ exten => _2600,1,NoOp("Llamada Inbound CASE - ANI:${CALLERID(all)} - DNIS:${EXTEN}")
+ exten => _2600,n,Set(DNIS=${EXTEN})
+ exten => _2600,n,Set(ANI=${CALLERID(all)})
+ exten => _2600,n,Dial(SIP/${EXTEN}@EDGE-CASE,80,gr)
+ exten => _2600,n,Hangup()
+
+ exten => _2500,1,NoOp("Llamada Inbound CASE - ANI:${CALLERID(all)} - DNIS:${EXTEN}")
+ exten => _2500,n,Set(DNIS=${EXTEN})
+ exten => _2500,n,Set(ANI=${CALLERID(all)})
+ exten => _2500,n,Dial(SIP/${EXTEN}@EDGE-CASE,80,gr)
+ exten => _2500,n,Hangup()
+
+ ;exten => _2400,1,NoOp("Llamada Inbound CASE - ANI:${CALLERID(all)} - DNIS:${EXTEN}")
+ ;exten => _2400,n,Set(DNIS=${EXTEN})
+ ;exten => _2400,n,Set(ANI=${CALLERID(all)})
+ ;exten => _2400,n,Set(ALEATORIO=${RAND(1,2)})
+ ;exten => _2400,n,GotoIf($["${ALEATORIO}" = "1"]?firsttrunk:otrastrunk)
+ ;exten => _2400,n(firsttrunk),Set(TRUNK=PRIMARY)
+ ;exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-CASE,80,gr)
+ ;nova-exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-CLOUD,80,gr)
+ ;exten => _2400,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+ ;exten => _2400,n(otrastrunk),Set(TRUNK=SECONDARY)
+ ;exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-2-CASE,80,gr)
+ ;nova-exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-CLOUD,80,gr)
+ ;exten => _2400,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+
+ exten => _9999,1,NoOp("Llamada Inbound CASE - ANI:${CALLERID(all)} - DNIS:${EXTEN}")
+ exten => _9999,n,Set(DNIS=${EXTEN})
+ exten => _9999,n,Set(ANI=${CALLERID(all)})
+ exten => _9999,n,Set(ALEATORIO=${RAND(1,2)})
+ ;exten => _9999,n,GotoIf($["${ALEATORIO}" = "1"]?firsttrunk:otrastrunk)
+ ;exten => _9999,n(firsttrunk),Set(TRUNK=PRIMARY)
+ ;exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-CASE,80,gr)
+ exten => _9999,n,Dial(SIP/${EXTEN}@EDGE-CLOUD,80,Tgr)
+ ;exten => _9999,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+ ;exten => _9999,n(otrastrunk),Set(TRUNK=SECONDARY)
+ ;exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-2-CASE,80,gr)
+ ;exten => _9999,n,Dial(SIP/${EXTEN}@EDGE-CLOUD,80,gr)
+ ;exten => _9999,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+
+ exten => _2400,1,NoOp("Llamada Inbound CASE - ANI:${CALLERID(all)} - DNIS:${EXTEN}")
+ exten => _2400,n,Set(DNIS=${EXTEN})
+ exten => _2400,n,Set(ANI=${CALLERID(all)})
+ exten => _2400,n,Set(ALEATORIO=${RAND(1,2)})
+ exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-CLOUD,80,Tgr)
+
+ ; exten => _2400,n,Set(ALEATORIO=${RAND(1,3)})
+ ;exten => _2400,n,GotoIf($["${ALEATORIO}" = "1"]?firsttrunk:otrastrunk)
+ ;exten => _2400,n(firsttrunk),Set(TRUNK=PRIMARY)
+ ;exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-CASE,80,gr)
+ ;exten => _2400,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+ ;exten => _2400,n(otrastrunk),GotoIf($["${ALEATORIO}" = "2"]?secondtrunk:thirdtrunk)
+ ;exten => _2400,n(secondtrunk),Set(TRUNK=SECONDARY)
+ ;exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-2-CASE,80,gr)
+ ;exten => _2400,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+ ;exten => _2400,n(thirdtrunk),Set(TRUNK=TERTIARY)
+ ;exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-3-CASE,80,gr)
+ ;exten => _2400,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+
+ ;exten => _2400,1,NoOp("Llamada Inbound CASE - ANI:${CALLERID(all)} - DNIS:${EXTEN}")
+ ;exten => _2400,n,Set(DNIS=${EXTEN})
+ ;exten => _2400,n,Set(ANI=${CALLERID(all)})
+ ;exten => _2400,n,Set(ALEATORIO=${RAND(1,3)})
+ ;exten => _2400,n,GotoIf($["${ALEATORIO}" = "1"]?firsttrunk:otrastrunk)
+ ;exten => _2400,n(firsttrunk),Set(TRUNK=PRIMARY)
+ ;exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-CASE,80,gr)
+ ;exten => _2400,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+ ;exten => _2400,n(otrastrunk),GotoIf($["${ALEATORIO}" = "2"]?secondtrunk:thirdtrunk)
+ ;exten => _2400,n(secondtrunk),Set(TRUNK=SECONDARY)
+ ;exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-2-CASE,80,gr)
+ ;exten => _2400,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+ ;exten => _2400,n(thirdtrunk),Set(TRUNK=TERTIARY)
+ ;exten => _2400,n,Dial(SIP/${EXTEN}@EDGE-CLOUD,80,gr)
+ ;exten => _2400,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+
+ ;exten => _2400,n,Hangup()
+
+ exten => _2300,1,NoOp("Llamada Inbound CASE - ANI:${CALLERID(all)} - DNIS:${EXTEN}")
+ exten => _2300,n,Set(DNIS=${EXTEN})
+ exten => _2300,n,Set(ANI=${CALLERID(all)})
+ exten => _2300,n,Set(ALEATORIO=${RAND(1,2)})
+ exten => _2300,n,GotoIf($["${ALEATORIO}" = "1"]?firsttrunk:otrastrunk)
+ exten => _2300,n(firsttrunk),Set(TRUNK=PRIMARY)
+ exten => _2300,n,Dial(SIP/${EXTEN}@EDGE-CASE,80,gr)
+ exten => _2300,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+ exten => _2300,n(otrastrunk),Set(TRUNK=SECONDARY)
+ exten => _2300,n,Dial(SIP/${EXTEN}@EDGE-2-CASE,80,gr)
+ exten => _2300,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+
+ ;exten => _2300,n,Dial(SIP/${EXTEN}@EDGE-CASE,80,gr)
+ ;exten => _2300,n,Goto(ASTERISK-DIAL-STATUS,s-${DIALSTATUS},1)
+ ;exten => _2300,n,Hangup()
+
+ [ASTERISK-DIAL-STATUS]
+  exten => s-CHANUNAVAIL,1,NoOp("Dial Status: ${DIALSTATUS}")
+  exten => s-CHANUNAVAIL,n,GotoIf($["${TRUNK}" = "PRIMARY"]?secondtrunk:firsttrunk)
+  exten => s-CHANUNAVAIL,n(secondtrunk),Dial(SIP/${DNIS}@EDGE-2-CASE,80,gr)
+  ;exten => s-CHANUNAVAIL,n(secondtrunk),Dial(SIP/${DNIS}@EDGE-CLOUD,80,gr)	
+  exten => s-CHANUNAVAIL,n,Hangup
+  exten => s-CHANUNAVAIL,n(firsttrunk),Dial(SIP/${DNIS}@EDGE-CASE,80,gr)
+  ;exten => s-CHANUNAVAIL,n(firsttrunk),Dial(SIP/${DNIS}@EDGE-CLOUD,80,gr)
+  exten => s-CHANUNAVAIL,n,Hangup
+
+  exten => s-CONGESTION,1,NoOp("Dial Status: ${DIALSTATUS}")
+  exten => s-CONGESTION,n,GotoIf($["${TRUNK}" = "PRIMARY"]?secondtrunk:firsttrunk)
+  exten => s-CONGESTION,n(secondtrunk),Dial(SIP/${DNIS}@EDGE-2-CASE,80,gr)
+  exten => s-CONGESTION,n,Hangup
+  exten => s-CONGESTION,n(firsttrunk),Dial(SIP/${DNIS}@EDGE-CASE,80,gr)
+  exten => s-CONGESTION,n,Hangup
+
+  ;  exten => s-CONGESTION,1,NoOp("Dial Status: ${DIALSTATUS}")
+  ;exten => s-CONGESTION,n,GotoIf($["${TRUNK}" = "PRIMARY"]?secondtrunk:otrastrunk)
+  ;exten => s-CONGESTION,n(secondtrunk),Dial(SIP/${DNIS}@EDGE-2-CASE,80,gr)
+  ;exten => s-CONGESTION,n,Hangup
+  ;exten => s-CONGESTION,n(otrastrunk),GotoIf($["${TRUNK}" = "SECONDARY"]?thirdtrunk:firsttrunk)
+  ;exten => s-CONGESTION,n(thirdtrunk),Dial(SIP/${DNIS}@EDGE-3-CASE,80,gr)
+  ;exten => s-CONGESTION,n,Hangup
+  ;exten => s-CONGESTION,n(firsttrunk),Dial(SIP/${DNIS}@EDGE-CASE,80,gr)
+  ;exten => s-CONGESTION,n,Hangup
+
+  ;exten => s-CHANUNAVAIL,1,NoOp("Dial Status: ${DIALSTATUS}")
+  ;exten => s-CHANUNAVAIL,n,GotoIf($["${TRUNK}" = "PRIMARY"]?secondtrunk:otrastrunk)
+  ;exten => s-CHANUNAVAIL,n(secondtrunk),Dial(SIP/${DNIS}@EDGE-2-CASE,80,gr)
+  ;exten => s-CHANUNAVAIL,n,Hangup
+  ;exten => s-CHANUNAVAIL,n(otrastrunk),GotoIf($["${TRUNK}" = "SECONDARY"]?thirdtrunk:firsttrunk)
+  ;exten => s-CHANUNAVAIL,n(thirdtrunk),Dial(SIP/${DNIS}@EDGE-CLOUD,80,gr)
+  ;exten => s-CHANUNAVAIL,n,Hangup
+  ;exten => s-CHANUNAVAIL,n(firsttrunk),Dial(SIP/${DNIS}@EDGE-CASE,80,gr)
+  ;exten => s-CHANUNAVAIL,n,Hangup
+
+  ;exten => s-CONGESTION,1,NoOp("Dial Status: ${DIALSTATUS}")
+  ;exten => s-CONGESTION,n,GotoIf($["${TRUNK}" = "PRIMARY"]?secondtrunk:otrastrunk)
+  ;exten => s-CONGESTION,n(secondtrunk),Dial(SIP/${DNIS}@EDGE-2-CASE,80,gr)
+  ;exten => s-CONGESTION,n,Hangup
+  ;exten => s-CONGESTION,n(otrastrunk),GotoIf($["${TRUNK}" = "SECONDARY"]?thirdtrunk:firsttrunk)
+  ;exten => s-CONGESTION,n(thirdtrunk),Dial(SIP/${DNIS}@EDGE-CLOUD,80,gr)
+  ;exten => s-CONGESTION,n,Hangup
+  ;exten => s-CONGESTION,n(firsttrunk),Dial(SIP/${DNIS}@EDGE-CASE,80,gr)
+  ;exten => s-CONGESTION,n,Hangup
+
+  exten => s-BUSY,1,NoOp("Dial Status: ${DIALSTATUS}")
+  exten => s-BUSY,n,GotoIf($["${TRUNK}" = "PRIMARY"]?secondtrunk:firsttrunk)
+  exten => s-BUSY,n(secondtrunk),Dial(SIP/${DNIS}@EDGE-2-CASE,80,gr)
+  exten => s-BUSY,n,Hangup
+  exten => s-BUSY,n(firsttrunk),Dial(SIP/${DNIS}@EDGE-CASE,80,gr)
+  exten => s-BUSY,n,Hangup
+
+  exten => s-ANSWER,1,NoOp("Dial Status: ${DIALSTATUS}")
+  exten => s-ANSWER,n,Hangup
+
+  exten => s-NOANSWER,1,NoOp("Dial Status: ${DIALSTATUS}")
+  exten => s-NOANSWER,n,Hangup
+
+  exten => s-CANCEL,1,NoOp("Dial Status: ${DIALSTATUS}")
+  exten => s-CANCEL,n,Hangup
+
+  exten => h,1,NoOP("Call Asterisk Inbound - ${CONTEXT} - STOP")
+
